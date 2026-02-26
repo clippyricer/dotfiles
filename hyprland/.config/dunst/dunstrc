@@ -508,6 +508,4 @@
     foreground = "#c0caf5"
     background = "#1f2335"
     frame_color = "#c0caf5"
-    progress_bar_foreground = "#c0caf5"
-    progress_bar_background = "#1f2335"
-    progress_bar_frame_color = "#c0caf5"
+    highlight = "#5294e2"
