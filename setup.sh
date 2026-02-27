@@ -1,49 +1,84 @@
 #!/bin/bash
 
+# Current dir
+dotdir=`pwd`
+
+# Install hyprland deps
 read -p "Would you like to install hyprland?: (y/n) " hypr
-if [ $hypr == "y" ]; then
+if [ $hypr == "y" || $hypr == "Y"]; then
     yay -S $(cat dependencies/hyprland-arch.txt)
 fi
 
+# Install basic deps
 sudo pacman -S $(cat dependencies/basic-arch.txt)
 
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-tar -xvf JetBrainsMono.tar.xz && sudo mkdir -p /usr/share/fonts/JetBrainsMono/
-sudo mv *.ttf /usr/share/fonts/JetBrainsMono/
-fc-cache -frv && rm JetBrainsMono.tar.xz
+# Install JetBrainsMono NerdFont
+curl -OLv https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+if [ ! -d "/usr/share/fonts/JetBrainsMono" ]; then
+    mkdir -p /usr/share/fonts/JetBrainsMono/
+fi
+
+fontdir="/usr/share/fonts/JetBrainsMono/"
+
+tar -xvf JetBrainsMono.tar.xz -C $fontdir; rm -rf JetBrainsMono.tar.xz
+cd $fontdir; sudo rm -rf *.md *.txt
+cd $dotdir
+fc-cache -frv
+
+# Initlize config
 stow kitty --adopt
 stow vim --adopt
 stow zsh --adopt
 
-rm -rf OFL.txt
-git reset --hard HEAD
-
-if [ $hypr == "y" ]; then
+# Install icons for hyprland
+if [ $hypr == "y" || $hypr == "Y"]; then
     stow hyprland --adopt
-    sudo mkdir -p /usr/share/icons/FontAwesome
-    sudo cp icons/* /usr/share/icons/FontAwesome
-    sudo rm -rf /etc/xdg/waybar/ && sudo rm -rf /etc/rofi/
-    sudo rm -rf /etc/dunst/
+    if [ ! -d "/usr/share/icons/FontAwsome" ]; then
+        sudo mkdir -p /usr/share/icons/FontAwesome; icons="/usr/share/icons/FontAwesome/"
+    fi
+    sudo cp icons/* $icons
+    mkdir -p $HOME/Pictures/Wallpapers; mv arch.png $HOME/Pictures/Wallpapers
 fi
 
+# Install spotify
 sudo cp spotify-notify /usr/local/bin
-mkdir -p $HOME/.config/systemd/user/
+
+if [ ! -d "$HOME/.config/systemd/user"]; then
+    mkdir -p $HOME/.config/systemd/user/
+fi
+
 cp spotify-notify.service $HOME/.config/systemd/user/
 
-mkdir -p $HOME/Pictures/Wallpapers/
-cp arch.png $HOME/Pictures/Wallpapers/
+# Install arch wallapaper for hyprland
+if [ $hypr == "y" || $hypr == "Y" ]; then
+    if [ ! -d "$HOME/Pictures/Wallpapers"]; then
+        mkdir -p $HOME/Pictures/Wallpapers/
+    fi
+    cp arch.png $HOME/Pictures/Wallpapers/
+fi
 
-cd $HOME && git clone https://github.com/romkatv/powerlevel10k.git
-systemctl --user daemon-reload
-systemctl --user enable --now spotify-notify.service
-systemctl --user enable spotify-notify.service
-systemctl --user start spotify-notify.service
+# Install p10k
+cd $HOME
+if [ ! -d "$HOME/powerlevel10k" ]; then
+    git clone https://github.com/romkatv/powerlevel10k.git
+else
+    cd $HOME/powerlevel10k; git pull --force; cd $HOME
+fi
+
+# Enable dunst spotify
+systemctl --user daemon-reload; systemctl --user enable --now spotify-notify.service
+systemctl --user enable spotify-notify.service; systemctl --user start spotify-notify.service
 
 
+# Install Hyprland
 if [ $hypr == "y" ]; then
-    git clone --recursive https://github.com/hyprwm/Hyprland
-    cd Hyprland
-    make all && sudo make install
+    if [ ! -d "$HOME/Hyprland" ]; then
+        git clone --recursive https://github.com/hyprwm/Hyprland; cd Hyprland/
+    else
+        cd $HOME/Hyprland; git pull --force
+    fi
+    mkdir build; cd build/
+    cmake -G Ninja ..; sudo ninja && sudo ninja install
 fi
 
 echo "Done!"
