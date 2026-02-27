@@ -5,7 +5,8 @@ dotdir=`pwd`
 
 # Install hyprland deps
 read -p "Would you like to install hyprland?: (y/n) " hypr
-if [ $hypr == "y" || $hypr == "Y" ]; then
+
+if [[ $hypr == "y" || $hypr == "Y" ]]; then
     yay -S $(cat dependencies/hyprland-arch.txt)
 fi
 
@@ -31,7 +32,7 @@ stow vim --adopt
 stow zsh --adopt
 
 # Install icons for hyprland
-if [ $hypr == "y" || $hypr == "Y"]; then
+if [[ $hypr == "y" || $hypr == "Y" ]]; then
     stow hyprland --adopt
     if [ ! -d "/usr/share/icons/FontAwsome" ]; then
         sudo mkdir -p /usr/share/icons/FontAwesome; icons="/usr/share/icons/FontAwesome/"
@@ -50,7 +51,7 @@ fi
 cp spotify-notify.service $HOME/.config/systemd/user/
 
 # Install arch wallapaper for hyprland
-if [ $hypr == "y" || $hypr == "Y" ]; then
+if [[ $hypr == "y" || $hypr == "Y" ]]; then
     if [ ! -d "$HOME/Pictures/Wallpapers"]; then
         mkdir -p $HOME/Pictures/Wallpapers/
     fi
@@ -71,7 +72,7 @@ systemctl --user enable spotify-notify.service; systemctl --user start spotify-n
 
 
 # Install Hyprland
-if [ $hypr == "y" ]; then
+if [[ $hypr == "y" || $hypr == "Y" ]]; then
     if [ ! -d "$HOME/Hyprland" ]; then
         git clone --recursive https://github.com/hyprwm/Hyprland; cd Hyprland/
     else
@@ -89,12 +90,12 @@ cd $HOME
 read -p "Would you like to install the minegrub bootloader theme?: (y/n) " minegrub
 read -p "Would you like to install Spotify add block?: (y/n) " spotx
 
-if [ $minegrub == "Y" || $minegrub == "y" ]; then
+if [[ $minegrub == "Y" || $minegrub == "y" ]]; then
     git clone https://github.com/Lxtharia/double-minegrub-menu.git; cd double-minegrub-menu
     sudo ./install.sh
 fi
 
-if [ $spotx == "y" || $spotx == "Y" ]; then
+if [[ $spotx == "y" || $spotx == "Y" ]]; then
     cd $HOME; bash <(curl -sSL https://spotx-official.github.io/run.sh)
 fi
 
