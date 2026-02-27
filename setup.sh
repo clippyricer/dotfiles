@@ -38,7 +38,6 @@ systemctl --user daemon-reload
 systemctl --user enable --now spotify-notify.service
 systemctl --user enable spotify-notify.service
 systemctl --user start spotify-notify.service
-bash <(curl -sSL https://spotx-official.github.io/run.sh)
 
 
 if [ $hypr == "y" ]; then
