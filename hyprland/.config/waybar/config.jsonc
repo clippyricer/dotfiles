@@ -4,11 +4,12 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 27, // Waybar height (to be removed for auto height)
     // "width": 2000, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "cpu",
         "memory",
+        "disk",
         "custom/updates"
     ],
     "modules-center": [
@@ -47,24 +48,34 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}%  ",
-        "tooltip": false
+        "format": "{usage}% ",
+        "tooltip": true
     },
     "memory": {
-        "format": "{}%  "
+        "format": "{}% "
+    },
+    "disk": {
+        "interval": "30",
+        "format": "{percentage_used}% ",
+        "format-alt": "{percentage_free}% ",
+        "unit": "GB",
+        "tooltip": true,
+        "tooltip-format": "{used} / {total} | {percentage_used}%"
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format": "{temperatureF}°F {icon}",
+        "format-icons": ["", "", ""],
+        "tooltip": false
     },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip": false
     },
     "battery": {
         "states": {
@@ -94,20 +105,20 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%)  ",
-        "format-ethernet": "{ipaddr}/{cidr}  ",
-        "tooltip-format": "{ifname} via {gwaddr}  ",
-        "format-linked": "{ifname} (No IP)  ",
-        "format-disconnected": "Disconnected ⚠ ",
-        "format-alt": "{ifname}: {ipaddr}/{cidr} "
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source} ",
-        "format-bluetooth": "{volume}% {icon} {format_source} ",
-        "format-bluetooth-muted": " {icon} {format_source} ",
-        "format-muted": " {format_source} ",
-        "format-source": "{volume}%  ",
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
@@ -148,8 +159,8 @@
     "format": "{} {icon}",
     "return-type": "json",
     "format-icons": {
-        "has-updates": " ",
-        "updated": " "
+        "has-updates": "",
+        "updated": ""
     },
     "exec-if": "which waybar-module-pacman-updates",
     "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"

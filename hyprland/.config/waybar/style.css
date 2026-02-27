@@ -25,15 +25,6 @@ window#waybar.solo {
 }
 */
 
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
-
 button {
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
@@ -48,19 +39,24 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#custom-updates:hover,
+#network:hover,
+#battery:hover,
+#clock:hover {
+    color: #808080;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: #362F72;
-    color: #111A3C;
+    padding: 0 10px;
+    background-color: #121212;
+    color: #ffffff;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(10, 10, 1, 0.2);
 }
 
 #workspaces button.focused, #workspaces button.active {
@@ -95,7 +91,7 @@ button:hover {
 #scratchpad,
 #power-profiles-daemon,
 #mpd {
-    padding: 0 10px;
+    padding: 0 13px;
     color: #ffffff;
 }
 
@@ -167,19 +163,19 @@ label:focus {
 }
 
 #memory {
-    background-color: #9b59b6;
+    color: #ffffff;
 }
 
 #disk {
-    background-color: #964B00;
+    color: #ffffff;
 }
 
 #backlight {
-    background-color: #90b1b1;
+    color: #ffffff;
 }
 
 #network {
-    background-color: #2980b9;
+    color: #ffffff;
 }
 
 #network.disconnected {
@@ -187,13 +183,11 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    color: #ffffff;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    color: #ffffff;
 }
 
 #wireplumber {
@@ -220,7 +214,7 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    color: #ffffff;
 }
 
 #temperature.critical {
@@ -238,15 +232,6 @@ label:focus {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
 }
 
 #mpd {
