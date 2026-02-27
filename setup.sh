@@ -86,7 +86,7 @@ if [[ $hypr == "y" || $hypr == "Y" ]]; then
     cmake -G Ninja ..; sudo ninja && sudo ninja install
     systemctl enable ly@tty2.service; systemctl disable getty@tty2.service
     rustup override set stable || exit -1; rustup update stable; git clone https://github.com/coffebar/waybar-module-pacman-updates.git /tmp/waybar-module-pacman-updates
-    pushd /tmp/waybar-module-pacman-updates && cargo build --release; sudo cp target/release/waybar-module-pacman-updates /usr/local/bin/
+    pushd /tmp/waybar-module-pacman-updates && cargo build --release; mkdir -p ~/.local/bin; cp target/release/waybar-module-pacman-updates ~/.local/bin/
     popd && rm -rf /tmp/waybar-module-pacman-updates 
 fi
 
