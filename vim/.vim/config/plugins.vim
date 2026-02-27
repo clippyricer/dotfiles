@@ -13,5 +13,6 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
+Plug 'KabbAmine/vCoolor.vim'
 
 call plug#end()
