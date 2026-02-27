@@ -89,10 +89,16 @@ cd $HOME
 # Options
 read -p "Would you like to install the minegrub bootloader theme?: (y/n) " minegrub
 read -p "Would you like to install Spotify add block?: (y/n) " spotx
+read -p "Would you like to install Ly configuration?: (y'n) " ly
 
 if [[ $minegrub == "Y" || $minegrub == "y" ]]; then
-    git clone https://github.com/Lxtharia/double-minegrub-menu.git; cd double-minegrub-menu
+    git clone https://github.com/Lxtharia/double-minegrub-menu.git /tmp/double-minegrub-menu; pushd /tmp/double-minegrub-menu
     sudo ./install.sh
+    popd
+fi
+
+if [[ $ly == "y" || $ly == "Y" ]]; then
+    sudo git clone https://github.com/clippyricer/ly-config.git /etc/ly
 fi
 
 if [[ $spotx == "y" || $spotx == "Y" ]]; then

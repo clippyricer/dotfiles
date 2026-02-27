@@ -2,24 +2,24 @@
 {
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 27, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 5, // Gaps between modules (4px)
+    "spacing": 3, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "cpu",
-        "memory"
+        "memory",
+        "custom/updates"
     ],
     "modules-center": [
         "hyprland/workspaces"
     ],
     "modules-right": [
-        "pulseaudio",
         "network",
         "temperature",
+        "pulseaudio",
         "backlight",
         "battery",
-        "battery#bat2",
         "clock",
         "custom/power"
     ],
@@ -80,9 +80,6 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "power-profiles-daemon": {
       "format": "{icon}",
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
@@ -96,7 +93,7 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{essid} ({signalStrength}%)  ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
@@ -105,7 +102,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon} {format_source} ",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
@@ -145,6 +142,16 @@
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
-    } 
+    }, 
+    "custom/updates": {
+        "format": "{} {icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󱍷",
+            "updated": "󰂪"
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
+    }
 }
 
