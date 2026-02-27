@@ -115,7 +115,7 @@ if [[ $hypr == "y" || $hypr == "Y" ]]; then
     git clone https://codeberg.org/LGFae/awww.git /tmp/awww
     pushd /tmp/awww; cargo build --release
     sudo mv target/release/awww /usr/local/bin; sudo mv target/release/awww-daemon /usr/local/bin
-    popd
+    ./doc/gen.sh; popd
 fi
 
 clear
