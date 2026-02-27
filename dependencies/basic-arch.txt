@@ -1,4 +1,5 @@
 zip
+otf-font-awesome
 unzip
 fastfetch
 exa
