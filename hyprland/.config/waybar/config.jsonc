@@ -7,8 +7,6 @@
     "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-       // "custom/media",
-        "mpd",
         "cpu",
         "memory"
     ],
