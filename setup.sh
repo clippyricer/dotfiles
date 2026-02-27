@@ -15,7 +15,7 @@ sudo pacman -S $(cat dependencies/basic-arch.txt)
 
 # Install JetBrainsMono NerdFont
 curl -OLv https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-if [ ! -d "/usr/share/fonts/JetBrainsMono" ]; then
+if [[ ! -d "/usr/share/fonts/JetBrainsMono" ]]; then
     mkdir -p /usr/share/fonts/JetBrainsMono/
 fi
 
@@ -34,7 +34,7 @@ stow zsh --adopt
 # Install icons for hyprland
 if [[ $hypr == "y" || $hypr == "Y" ]]; then
     stow hyprland --adopt
-    if [ ! -d "/usr/share/icons/FontAwsome" ]; then
+    if [[ ! -d "/usr/share/icons/FontAwsome" ]]; then
         sudo mkdir -p /usr/share/icons/FontAwesome; icons="/usr/share/icons/FontAwesome/"
     fi
     sudo cp icons/* $icons
@@ -44,7 +44,7 @@ fi
 # Install spotify
 sudo cp spotify-notify /usr/local/bin
 
-if [ ! -d "$HOME/.config/systemd/user"]; then
+if [[ ! -d "$HOME/.config/systemd/user" ]]; then
     mkdir -p $HOME/.config/systemd/user/
 fi
 
