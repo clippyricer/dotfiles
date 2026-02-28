@@ -7,6 +7,7 @@ dotdir=`pwd`
 sudo pacman -S gum
 
 # Install hyprland deps
+clear
 echo ""
 gum confirm "Would you like to install hyprland?"
 
@@ -20,8 +21,9 @@ sudo pacman -S $(cat dependencies/basic-arch.txt)
 # Install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Install JetBrainsMono NerdFont
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+# Install JetBrainsMono NerdFont and icons
+curl -LO https://github.com/clippyricer/files/releases/download/v0.0.1/assets.tar; tar -xvf assets.tar
+curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
 if [ ! -d "/usr/share/fonts/JetBrainsMono" ]; then
     mkdir -p /usr/share/fonts/JetBrainsMono/
 fi
@@ -45,24 +47,24 @@ if [ $? == 0 ]; then
         sudo mkdir -p /usr/share/icons/FontAwesome; icons="/usr/share/icons/FontAwesome/"
     fi
     sudo cp icons/* $icons
-    mkdir -p $HOME/Pictures/Wallpapers; mv arch.png $HOME/Pictures/Wallpapers
+    mkdir -p $HOME/Pictures/Wallpapers; mv wallpapers/* $HOME/Pictures/Wallpapers
 fi
 
 # Install spotify
-sudo cp spotify-notify /usr/local/bin
+sudo cp junk/spotify-notify /usr/local/bin
 
 if [ ! -d "$HOME/.config/systemd/user" ]; then
     mkdir -p $HOME/.config/systemd/user/
 fi
 
-cp spotify-notify.service $HOME/.config/systemd/user/
+cp junk/spotify-notify.service $HOME/.config/systemd/user/
 
 # Install arch wallapaper for hyprland
 if [ $? == 0 ]; then
     if [ ! -d "$HOME/Pictures/Wallpapers"]; then
         mkdir -p $HOME/Pictures/Wallpapers/
     fi
-    cp arch.png $HOME/Pictures/Wallpapers/
+    cp wallpapers/* $HOME/Pictures/Wallpapers/
 fi
 
 # Install p10k
