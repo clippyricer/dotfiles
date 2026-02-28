@@ -104,13 +104,14 @@ if [ $? == 0 ]; then
 fi
 
 # Install spotify
-sudo cp junk/spotify-notify /usr/local/bin
+sudo cp other/spotify-notify /usr/local/bin
 
 if [ ! -d "$HOME/.config/systemd/user" ]; then
     mkdir -p $HOME/.config/systemd/user/
 fi
 
-cp junk/spotify-notify.service $HOME/.config/systemd/user/
+cd $dotdir
+cp other/spotify-notify.service $HOME/.config/systemd/user/
 
 # Install arch wallapaper for hyprland
 if [ $? == 0 ]; then
