@@ -7,10 +7,10 @@ dotdir=`pwd`
 sudo pacman -S gum
 
 # Install hyprland deps
-#read -p "Would you like to install hyprland?: (y/n) " hypr
+echo ""
 gum confirm "Would you like to install hyprland?"
 
-if [ $? == 0]; then
+if [ $? == 0 ]; then
     yay -S $(cat dependencies/hyprland-arch.txt)
 fi
 
