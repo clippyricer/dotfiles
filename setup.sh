@@ -18,6 +18,59 @@ fi
 # Install basic deps
 sudo pacman -S $(cat dependencies/basic-arch.txt) --noconfirm
 
+
+# Backup current config
+mkdir -p backup/config/
+
+if [ -d $HOME/.config/kitty ]; then
+    cp -r $HOME/.config/kitty ./backup/config/
+fi
+
+if [ -d $HOME/.config/.vim ]; then
+    cp -r $HOME/.config/.vim ./backup/config/
+fi
+
+if [ -f $HOME/.vimrc ]; then
+    cp $HOME/.vimrc ./backup/vimrc
+fi
+
+if [ -f $HOME/.p10k.zsh ]; then
+    cp $HOME/.p10k.zsh ./backup/p10k.zsh
+fi
+
+if [ -f $HOME/.zshrc ]; then
+    cp $HOME/.zshrc ./backup/zshrc
+fi
+
+# Backup hyprland config
+if [ $? == 0 ]; then
+    echo "I will ask you questions. If you don't use what I ask you about"
+    echo "leave it blank. Make sure to specify FULL path ex(/home/user/.config/dunst)"
+    sleep 4
+    echo ""
+    read -p "Input your dunst config path: " dunstpath
+    read -p "Input your hyprland config path: " hyprpath
+    read -p "Input your rofi config path: " rofipath
+    read -p "Input your waybar config path: " waybarpath
+    echo ""
+
+    if [[ ! $dunstpath == "" ]]; then
+        cp -r $dunstpath ./backup/config/
+    fi
+
+    if [[ ! $hyprpath == "" ]]; then
+        cp -r $hyprpath ./backup/config/
+    fi
+
+    if [[ ! $rofipath == "" ]]; then
+        cp -r $rofipath ./backup/config/
+    fi
+
+    if [[ ! $waybarpath == "" ]]; then
+        cp -r $waybarpath ./backup/config/
+    fi
+fi
+
 # Install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
