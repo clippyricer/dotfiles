@@ -12,17 +12,17 @@ echo ""
 gum confirm "Would you like to install hyprland?"
 
 if [ $? == 0 ]; then
-    yay -S $(cat dependencies/hyprland-arch.txt)
+    yay -S $(cat dependencies/hyprland-arch.txt) --noconfirm
 fi
 
 # Install basic deps
-sudo pacman -S $(cat dependencies/basic-arch.txt)
+sudo pacman -S $(cat dependencies/basic-arch.txt) --noconfirm
 
 # Install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Install JetBrainsMono NerdFont and icons
-curl -LO https://github.com/clippyricer/files/releases/download/v0.0.1/assets.tar; tar -xvf assets.tar
+curl -LO https://github.com/clippyricer/dotfiles/releases/download/v0.0.1/assets.tar; tar -xvf assets.tar
 curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
 if [ ! -d "/usr/share/fonts/JetBrainsMono" ]; then
     mkdir -p /usr/share/fonts/JetBrainsMono/
