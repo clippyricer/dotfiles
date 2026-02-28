@@ -4,3 +4,6 @@ kitty/.config/kitty.conf.bak
 # Vim plugins
 vim/.vim/plugged/*
 vim/.vim/autoload/plug.vim.old
+
+# Junk
+release/
