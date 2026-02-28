@@ -96,6 +96,12 @@ fi
 
 fontdir="/usr/share/fonts/JetBrainsMono/"
 
+# install oh my posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
+pushd ~/.local/bin
+sudo mv oh-my-posh /usr/local/bin
+popd
+
 tar -xvf JetBrainsMono.tar.xz -C $fontdir; rm -rf JetBrainsMono.tar.xz
 cd $fontdir; sudo rm -rf *.md *.txt
 cd $dotdir

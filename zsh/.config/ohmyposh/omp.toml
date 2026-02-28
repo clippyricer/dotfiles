@@ -1,0 +1,153 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+final_space = true
+version = 4
+
+[[blocks]]
+alignment = "left"
+leading_diamond = "<#7eb8da>┏</>"
+type = "prompt"
+
+[[blocks.segments]]
+foreground = "#7eb8da"
+style = "diamond"
+template = "[<#ffffff></> {{ .CurrentDate | date .Format }}]"
+type = "time"
+
+[blocks.segments.options]
+time_format = "01/02/2006 @ 3:04:05 PM MST"
+
+[[blocks.segments]]
+foreground = "#7eb8da"
+style = "plain"
+template = "[<#ffffff></> {{ .UserName }} :: <#ffffff></> {{ .HostName }}]"
+type = "session"
+
+[[blocks.segments]]
+foreground = "#be9ddf"
+style = "diamond"
+template = "[<#ffffff></> RAM: {{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB]"
+type = "sysinfo"
+
+[[blocks.segments]]
+foreground = "#f36943"
+foreground_templates = ["{{if eq \"Charging\" .State.String}}#40c4ff{{end}}", "{{if eq \"Discharging\" .State.String}}#ff5722{{end}}", "{{if eq \"Full\" .State.String}}#4caf50{{end}}"]
+style = "plain"
+template = "[{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}]"
+type = "battery"
+
+[blocks.segments.options]
+charged_icon = "<#ffffff></> "
+charging_icon = " "
+discharging_icon = "<#ffff00></> "
+
+[[blocks.segments]]
+foreground = "#be9ddf"
+style = "diamond"
+template = "[<#ffffff></> {{ .FormattedMs }}s]"
+type = "executiontime"
+
+[blocks.segments.options]
+style = "dallas"
+threshold = 0
+
+[[blocks]]
+alignment = "left"
+leading_diamond = "<#7eb8da>┣</>"
+newline = true
+type = "prompt"
+
+[[blocks.segments]]
+foreground = "#7eb8da"
+style = "diamond"
+template = "[<#ffffff></> Subscription: <#ffff00>{{ .Name }}</>]"
+type = "az"
+
+[[blocks.segments]]
+foreground = "#7eb8da"
+style = "diamond"
+template = "[<#ffffff></> Azure Developer CLI Environment: <#ffff00>{{ .DefaultEnvironment  }}</> :: <#ffff00>{{ .Version }}</>]"
+type = "azd"
+
+[[blocks.segments]]
+foreground = "#7eb8da"
+style = "diamond"
+template = "[<#ffffff></> <#ffff00>{{ .Profile }}</>{{if .Region}}@<#ffff00>{{ .Region }}</>{{ end }}]"
+type = "aws"
+
+[[blocks.segments]]
+foreground = "#7eb8da"
+style = "diamond"
+template = "[{{ if .Error }}{{ .Error }}{{ else }}<#ffffff></> <#ffff00>{{ .Project }}</> :: <#ffff00>{{.Account}}</>{{ end }}]"
+type = "gcp"
+
+[[blocks.segments]]
+foreground = "#ffa5d8"
+style = "diamond"
+template = "[<#ffffff>󱃾</> <#ffff00>{{.Context}}</>{{if .Namespace}} :: <#ffff00>{{.Namespace}}</>{{end}}]"
+type = "kubectl"
+
+[[blocks.segments]]
+foreground = "#ffa5d8"
+style = "diamond"
+template = "[{{ if .Error }}{{ .Error }}{{ else }}{{ if .Name }}<#ffffff></> {{ .Name }}{{ end }}{{ if .Target }} {{ .Target }}{{ end }}{{ end }}]"
+type = "project"
+
+[[blocks]]
+alignment = "left"
+leading_diamond = "<#7eb8da>┣</>"
+newline = true
+type = "prompt"
+
+[[blocks.segments]]
+foreground = "#7eb8da"
+style = "diamond"
+template = "[<#ffffff></> <#98bfad>{{ .Path }}</>]"
+type = "path"
+
+[blocks.segments.options]
+style = "full"
+
+[[blocks.segments]]
+foreground = "#ffa5d8"
+style = "plain"
+template = "[<#ffffff>{{ .UpstreamIcon }} </>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <#ffffff></> {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} <#ffffff></> {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} <#ffffff></> {{ .StashCount }}{{ end }}]"
+type = "git"
+
+[blocks.segments.options]
+fetch_status = true
+fetch_upstream_icon = true
+
+[[blocks]]
+alignment = "left"
+leading_diamond = "<#7eb8da>└─</>"
+newline = true
+type = "prompt"
+
+[[blocks.segments]]
+style = "diamond"
+template = "<#ffff00>[#]</>"
+type = "root"
+
+[[blocks.segments]]
+foreground = "#ffa5d8"
+style = "diamond"
+template = "[<#ffffff></> Error, check your command]"
+type = "status"
+
+[[blocks.segments]]
+style = "diamond"
+template = ">"
+type = "text"
+
+[error_line]
+background = "transparent"
+template = "<#ff0000></> "
+
+[secondary_prompt]
+background = "transparent"
+template = " "
+
+[valid_line]
+background = "transparent"
+template = "> "
+
