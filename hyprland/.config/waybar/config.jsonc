@@ -12,7 +12,7 @@
         "memory",
         "disk",
         "custom/weather",
-        "custom/spotify",
+        "custom/stk",
         "custom/updates"
     ],
     "modules-center": [
@@ -160,7 +160,7 @@
         "restart-interval": 200,
         "return-type": "json"
     },
-    "custom/spotify": {
+    "custom/stk": {
         "format": "",
         "on-click": "supertuxkart",
         "tooltip": true,

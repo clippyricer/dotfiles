@@ -5,7 +5,7 @@ dotdir=`pwd`
 
 #Install gum
 sudo pacman -S gum --noconfirm
-
+pip install chardet lib3 datetime requests statistics urllib3 dulwich
 # Instlall paru
 sudo pacman -S base-devel --noconfirm
 pushd $HOME; git clone https://aur.archlinux.org/paru.git
@@ -45,6 +45,14 @@ fi
 
 if [ -f $HOME/.zshrc ]; then
     cp $HOME/.zshrc ./backup/zshrc
+fi
+
+if [ -d $HOME/.config/eza ]; then
+    cp -r $HOME/.config/eza ./backup/config/
+fi
+
+if [ -d $HOME/.config/btop ]; then
+    cp -r $HOME.config/btop ./backup/config/
 fi
 
 # Backup hyprland config
@@ -97,6 +105,8 @@ fc-cache -frv
 stow kitty --adopt
 stow vim --adopt
 stow zsh --adopt
+stow eza --adopt
+stow btop --adopt
 
 # Install icons for hyprland
 if [ $? == 0 ]; then

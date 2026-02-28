@@ -28,7 +28,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # Alias
 alias ff="fastfetch"
-alias ls="exa"
+alias ls="eza --icons"
 alias yazi="sudo yazi"
 alias ga="git add ."
 alias gp="git push"
@@ -40,6 +40,8 @@ alias vi="vim"
 alias tree="tree -ah -I '.git'"
 alias yeet='paru -Rcs'
 alias yay='paru'
+alias top='btop'
+alias htop='btop'
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 export PATH="$HOME/.local/bin:$PATH"

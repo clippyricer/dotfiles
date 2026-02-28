@@ -33,6 +33,7 @@ ORANGE = '#e69875'
 RED    = '#e67e80'
 PURPLE = '#d699b6'
 BLUE   = '#7fbbb3'
+WHITE  = '#ffffff'
 
 
 
@@ -196,7 +197,7 @@ def get_current_weather_data() -> dict:
     @return api response
     '''
 
-    res = make_request(f'data/2.5/weather?lat={LATITUDE}&lon={LONGITUDE}&units=metric')
+    res = make_request(f'data/2.5/weather?lat={LATITUDE}&lon={LONGITUDE}&units=imperial')
 
     if 'rain' not in res.keys():
         res['rain'] = { '1h': 0 }
@@ -222,9 +223,9 @@ def current_weather():
 
     # print data
     print_entry('weather',  f'\x1b[32m{weather}\x1b[0m')
-    print_entry('temp',     f'\x1b[33m{temperature} °C\x1b[90m, feels like \x1b[33m{temperature_felt} °C\x1b[0m')
+    print_entry('temp',     f'\x1b[33m{temperature} °F\x1b[90m, feels like \x1b[33m{temperature_felt} °F\x1b[0m')
     print_entry('humidity', f'\x1b[31m{humidity} % RH\x1b[0m')
-    print_entry('wind',     f'\x1b[35m{wind_speed} m/s\x1b[90m ({wind_direction})\x1b[0m')
+    print_entry('wind',     f'\x1b[35m{wind_speed} mph\x1b[90m ({wind_direction})\x1b[0m')
     print_entry('rain',     f'\x1b[34m{rainfall} mm\x1b[0m')
 
 
@@ -240,7 +241,7 @@ def get_forecast_data() -> dict:
     @return api response grouped by date
     '''
 
-    res = make_request(f'data/2.5/forecast?lat={LATITUDE}&lon={LONGITUDE}&units=metric')
+    res = make_request(f'data/2.5/forecast?lat={LATITUDE}&lon={LONGITUDE}&units=imperial')
 
     days = dict()
     for i in res['list']:
@@ -335,9 +336,9 @@ def daily_forecast():
         # print data
         print(f'\x1b[1m{day}\x1b[0m ({data["weekday"]}):')
         print_entry('weather',  f'\x1b[32m{data["weather_average"]}\x1b[0m', indent = 2)
-        print_entry('temp',     f'\x1b[33m{data["max_temperature"]} °C\x1b[0m / \x1b[33m{data["min_temperature"]} °C\x1b[0m', indent = 2)
+        print_entry('temp',     f'\x1b[33m{data["max_temperature"]} °F\x1b[0m / \x1b[33m{data["min_temperature"]} °F\x1b[0m', indent = 2)
         print_entry('humidity', f'\x1b[31m{data["humidity_average"]} % RH\x1b[0m', indent = 2)
-        print_entry('wind',     f'\x1b[35m{data["wind_average"]} m/s\x1b[0m', indent = 2)
+        print_entry('wind',     f'\x1b[35m{data["wind_average"]} mph\x1b[0m', indent = 2)
         print_entry('rain',     f'\x1b[34m{data["rainfall_total_estimated"]} mm\x1b[0m' +
                                 f'\x1b[90m{f""" ({data["max_precipitation_prob"]}%)""" if data["max_precipitation_prob"] > 0 else ""}' +
                                 f'{f" (estimated)" if data["rainfall_total"] != data["rainfall_total_estimated"] else ""}\x1b[0m\n', indent = 2)
@@ -369,7 +370,7 @@ def detailed_forecast():
 
             # print data
             output = ''
-            output += f'\x1b[33m{temperature:4} °C\x1b[90m, '
+            output += f'\x1b[33m{temperature:4} °F\x1b[90m, '
             output += f'\x1b[32m{weather}\x1b[0m'
             if rainfall > 0:
                 output += f'\x1b[90m: \x1b[34m{rainfall} mm \x1b[90m({precipitation_prob}%)\x1b[0m'
@@ -394,7 +395,7 @@ def waybar_widget(data: dict) -> str:
     weather = data['weather'][0]['main'].lower()
     temperature = round(data['main']['temp'])
 
-    return f'{colorize(weather, DARK)} {temperature}°'
+    return f'{colorize(weather, WHITE)} {temperature}°'
 
 
 def waybar_current(data: dict) -> str:
@@ -418,9 +419,9 @@ def waybar_current(data: dict) -> str:
     # generate output
     output = ''
     output += waybar_entry('weather',  colorize(weather, YELLOW))
-    output += waybar_entry('temp',     f'{colorize(f"{temperature} °C", ORANGE)}{colorize(", feels like ", GRAY)}{colorize(f"{temperature_felt} °C", ORANGE)}')
+    output += waybar_entry('temp',     f'{colorize(f"{temperature} °F", ORANGE)}{colorize(", feels like ", GRAY)}{colorize(f"{temperature_felt} °F", ORANGE)}')
     output += waybar_entry('humidity', colorize(f'{humidity} % RH', RED))
-    output += waybar_entry('wind',     f'{colorize(f"{wind_speed} m/s", PURPLE)} {colorize(f"({wind_direction})", GRAY)}')
+    output += waybar_entry('wind',     f'{colorize(f"{wind_speed} mph", PURPLE)} {colorize(f"({wind_direction})", GRAY)}')
     output += waybar_entry('rain',     colorize(f"{rainfall} mm", BLUE))
     return output
 
