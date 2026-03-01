@@ -88,7 +88,7 @@ fi
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Install JetBrainsMono NerdFont and icons
-curl -LO https://github.com/clippyricer/dotfiles/releases/download/v0.0.1/assets.tar; tar -xvf assets.tar
+curl -LO https://github.com/clippyricer/dotfiles/releases/download/v0.1.0/assets.tar; tar -xvf assets.tar
 curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
 if [ ! -d "/usr/share/fonts/JetBrainsMono" ]; then
     mkdir -p /usr/share/fonts/JetBrainsMono/
