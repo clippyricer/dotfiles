@@ -168,11 +168,9 @@
         "on-click": "kitty -e btop"
     },
     "custom/weather": {
-    "format": "{}",
-    "tooltip": true,
-    "interval": 600,
-    "exec": "/home/byte/Downloads/waybar-weather",
-    "return-type": "json"
+        "exec": "~/.config/waybar/weather.py waybar",
+        "restart-interval": 900,
+        "return-type": "json"
     },
     "custom/updates": {
     "format": "{} {icon}",

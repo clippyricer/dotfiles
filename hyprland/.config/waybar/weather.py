@@ -21,8 +21,8 @@ API_KEY = "9a87d3e86bb74074369c4363cad07880"
 
 # latitude and longitude of the city you want to query
 # can be obtained through `./weather.py geocoding <city[,state,country]>`
-LATITUDE  = 42.3554334
-LONGITUDE = -71.060511
+LATITUDE  = 42.6511674
+LONGITUDE = -73.754968
 
 # waybar colors
 GRAY   = '#859289'
