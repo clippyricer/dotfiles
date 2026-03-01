@@ -37,6 +37,8 @@ alias yay='paru'
 alias top='btop'
 alias htop='btop'
 alias omp='oh-my-posh'
+alias ompexj='oh-my-posh config export -f json -o ~/.dotfiles/zsh/.config/ohmyposh/omp.json'
+alias ompext='oh-my-posh config export -f toml -o ~/.dotfiles/zsh/.config/ohmyposh/omp.toml'
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
