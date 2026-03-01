@@ -54,7 +54,7 @@ if [ -d $HOME/.config/eza ]; then
 fi
 
 if [ -d $HOME/.config/btop ]; then
-    cp -r $HOME.config/btop ./backup/config/
+    cp -r $HOME/.config/btop ./backup/config/
 fi
 
 # Backup hyprland config
