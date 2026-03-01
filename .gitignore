@@ -5,8 +5,5 @@ kitty/.config/kitty.conf.bak
 vim/.vim/plugged/*
 vim/.vim/autoload/plug.vim.old
 
-# TOML
-zsh/.config/ohmyposh/*.toml
-
 # Junk
 release/
