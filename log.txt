@@ -1,65 +1,0 @@
-Script started on 2026-03-03 01:38:28+00:00 [COMMAND="./setup.sh " TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="147" LINES="33"]
-[sudo] password for byte: 
-[?25l:: Synchronizing package databases...
- core-testing
- core
- extra-testing
- extra
- multilib-testing
-[5F core-testing is up to date[K[1E core is up to date[K[1E extra-testing is up to date[K[1E extra is up to date[K[1E multilib-testing is up to date[K[1E multilib
-[1F multilib is up to date[K[1E:: Starting full system upgrade...
- there is nothing to do
-[?25hwarning: gum-0.17.0-1 is up to date -- reinstalling
-warning: base-devel-1-2 is up to date -- reinstalling
-warning: python-3.14.3-1 is up to date -- reinstalling
-warning: python-pip-26.0.1-1 is up to date -- reinstalling
-[?25lresolving dependencies...
-looking for conflicting packages...
-
-Packages (4) base-devel-1-2  gum-0.17.0-1  python-3.14.3-1  python-pip-26.0.1-1
-
-Total Installed Size:  101.62 MiB
-Net Upgrade Size:        0.00 MiB
-
-:: Proceed with installation? [Y/n] 
-(0/4) checking keys in keyring                                                           [---------------------------------------------------]   0%(1/4) checking keys in keyring                                                           [############---------------------------------------]  25%(2/4) checking keys in keyring                                                           [#########################--------------------------]  50%(3/4) checking keys in keyring                                                           [######################################-------------]  75%(4/4) checking keys in keyring                                                           [###################################################] 100%
-(0/4) checking package integrity                                                         [---------------------------------------------------]   0%(1/4) checking package integrity                                                         [#########------------------------------------------]  18%(2/4) checking package integrity                                                         [#########------------------------------------------]  18%(3/4) checking package integrity                                                         [###########################################--------]  86%(4/4) checking package integrity                                                         [###################################################] 100%
-(0/4) loading package files                                                              [---------------------------------------------------]   0%(1/4) loading package files                                                              [#########------------------------------------------]  18%(2/4) loading package files                                                              [#########------------------------------------------]  18%(3/4) loading package files                                                              [###########################################--------]  86%(4/4) loading package files                                                              [###################################################] 100%
-(0/4) checking for file conflicts                                                        [---------------------------------------------------]   0%(1/4) checking for file conflicts                                                        [############---------------------------------------]  25%(2/4) checking for file conflicts                                                        [#########################--------------------------]  50%(3/4) checking for file conflicts                                                        [######################################-------------]  75%(4/4) checking for file conflicts                                                        [###################################################] 100%
-(0/4) checking available disk space                                                      [---------------------------------------------------]   0%(1/4) checking available disk space                                                      [############---------------------------------------]  25%(2/4) checking available disk space                                                      [#########################--------------------------]  50%(3/4) checking available disk space                                                      [######################################-------------]  75%(4/4) checking available disk space                                                      [###################################################] 100%
-:: Processing package changes...
-(1/4) reinstalling gum                                                                   [---------------------------------------------------]   0%(1/4) reinstalling gum                                                                   [###################################################] 100%
-(2/4) reinstalling base-devel                                                            [---------------------------------------------------]   0%(2/4) reinstalling base-devel                                                            [###################################################] 100%
-(3/4) reinstalling python                                                                [---------------------------------------------------]   0%(3/4) reinstalling python                                                                [---------------------------------------------------]   0%(3/4) reinstalling python                                                                [---------------------------------------------------]   0%(3/4) reinstalling python                                                                [#########################--------------------------]  50%(3/4) reinstalling python                                                                [##############################################-----]  92%(3/4) reinstalling python                                                                [###################################################] 100%
-(4/4) reinstalling python-pip                                                            [---------------------------------------------------]   0%(4/4) reinstalling python-pip                                                            [###################################################] 100%
-:: Running post-transaction hooks...
-(1/1) Arming ConditionNeedsUpdate...
-[?25hDefaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: chardet in /home/byte/.local/lib/python3.14/site-packages (6.0.0.post1)
-Requirement already satisfied: lib3 in /home/byte/.local/lib/python3.14/site-packages (0.1.0)
-Requirement already satisfied: datetime in /home/byte/.local/lib/python3.14/site-packages (6.0)
-Requirement already satisfied: requests in /home/byte/.local/lib/python3.14/site-packages (2.29.0)
-Requirement already satisfied: statistics in /home/byte/.local/lib/python3.14/site-packages (1.0.3.5)
-Requirement already satisfied: urllib3 in /home/byte/.local/lib/python3.14/site-packages (1.26.20)
-Requirement already satisfied: dulwich in /home/byte/.local/lib/python3.14/site-packages (0.24.1)
-Requirement already satisfied: rich<14.0.0,>=13.7.1 in /home/byte/.local/lib/python3.14/site-packages (from lib3) (13.9.4)
-Requirement already satisfied: charset-normalizer<4,>=2 in /home/byte/.local/lib/python3.14/site-packages (from requests) (3.4.4)
-Requirement already satisfied: idna<4,>=2.5 in /home/byte/.local/lib/python3.14/site-packages (from requests) (3.11)
-Requirement already satisfied: certifi>=2017.4.17 in /home/byte/.local/lib/python3.14/site-packages (from requests) (2026.2.25)
-Requirement already satisfied: markdown-it-py>=2.2.0 in /home/byte/.local/lib/python3.14/site-packages (from rich<14.0.0,>=13.7.1->lib3) (4.0.0)
-Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /home/byte/.local/lib/python3.14/site-packages (from rich<14.0.0,>=13.7.1->lib3) (2.19.2)
-Requirement already satisfied: zope.interface in /home/byte/.local/lib/python3.14/site-packages (from datetime) (8.2)
-Requirement already satisfied: pytz in /home/byte/.local/lib/python3.14/site-packages (from datetime) (2025.2)
-Requirement already satisfied: docutils>=0.3 in /home/byte/.local/lib/python3.14/site-packages (from statistics) (0.22.4)
-Requirement already satisfied: mdurl~=0.1 in /home/byte/.local/lib/python3.14/site-packages (from markdown-it-py>=2.2.0->rich<14.0.0,>=13.7.1->lib3) (0.1.2)
-~ ~/.dotfiles
-fatal: destination path 'paru' already exists and is not an empty directory.
-[1m[33m==> WARNING:(B[m[1m A package has already been built, installing existing package...(B[m
-[1m[32m==>(B[m[1m Installing package paru with pacman -U...(B[m
-[sudo] password for byte: 
-
-^C^C^Csudo: a password is required
-
-[1m[31m==> ERROR:(B[m[1m Aborted by user! Exiting...(B[m
-
-Script done on 2026-03-03 01:39:22+00:00 [COMMAND_EXIT_CODE="130"]
