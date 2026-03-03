@@ -21,7 +21,7 @@ else
     fi
 fi
 
-if [[ "$ARCH_HASH" == "$LOADED_HASH" ]]; then
+if [[ "$ARCH_HASH" == "$ARCH_LOADED_HASH" ]]; then
     echo "Dependencies haven't changed. Keeping cache."
 else
     echo "Dependencies changed or cache missing. Reseting cache..."
