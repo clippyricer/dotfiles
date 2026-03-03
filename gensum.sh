@@ -2,7 +2,7 @@
 cache="$HOME/.cache/gensum.cache"
 mkdir -p "$HOME/.cache/"
 
-ARCH_HASH=$(sha256sum dependencies/basic-arch.txt | cut -d' ' -f1)
+ARCH_HASH=$(md5sum dependencies/basic-arch.txt | cut -d' ' -f1)
 echo $ARCH_HASH
 
 if [ -f "$HOME/.cache/gensum.cache" ]; then
@@ -21,7 +21,7 @@ else
     fi
 fi
 
-if [[ "$ARCH_HASH" -eq "$LOADED_HASH" ]]; then
+if [[ "$ARCH_HASH" == "$LOADED_HASH" ]]; then
     echo "Dependencies haven't changed. Keeping cache."
 else
     echo "Dependencies changed or cache missing. Reseting cache..."

@@ -1,125 +1,39 @@
-Script started on 2026-03-03 01:00:59+00:00 [COMMAND="./setup.sh " TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="147" LINES="34"]
+Script started on 2026-03-03 01:31:16+00:00 [COMMAND="./setup.sh " TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="147" LINES="33"]
 [sudo] password for byte: 
-[?25l:: Synchronizing package databases...
- core-testing
- core
- extra-testing
- extra
- multilib-testing
-[4F core is up to date[K[3E multilib-testing is up to date[K[1E multilib
-[4F extra-testing is up to date[K[2F core-testing is up to date[K[3E extra is up to date[K[2E multilib is up to date[K[1E:: Starting full system upgrade...
- there is nothing to do
-[?25h[H[2J[3J]11;?\[6n[?25l[?2004h [1;38;2;117;113;249mWould you like to install hyprland/update?[0m[K
-                                           [K
- [48;5;212m   [0m[38;5;230;48;5;212mYes[0m[48;5;212m   [0m  [48;5;235m   [0m[38;5;254;48;5;235mNo[0m[48;5;235m   [0m                       [K
-                                           [K
-[38;2;97;97;97m←→[0m [38;2;73;73;73mtoggle[0m[38;2;60;60;60m • [0m[38;2;97;97;97menter[0m [38;2;73;73;73msubmit[0m[38;2;60;60;60m • [0m[38;2;97;97;97my[0m [38;2;73;73;73mYes[0m[38;2;60;60;60m • [0m[38;2;97;97;97mn[0m [38;2;73;73;73mNo[0m    [K[147D[4A
+Sorry, try again.
+[sudo] password for byte: 
+Sorry, try again.
+[sudo] password for byte: 
+ls  sudo: 2 incorrect password attempts
+[sudo] password for byte: 
+^C^C^C^C^C^C^C^C^Csudo: a password is required
+^CTraceback (most recent call last):
+  File [35m"/usr/sbin/pip"[0m, line [35m8[0m, in [35m<module>[0m
+    sys.exit([31mmain[0m[1;31m()[0m)
+             [31m~~~~[0m[1;31m^^[0m
+  File [35m"/usr/lib/python3.14/site-packages/pip/_internal/cli/main.py"[0m, line [35m47[0m, in [35mmain[0m
+    from pip._internal.cli.autocompletion import autocomplete
+  File [35m"/usr/lib/python3.14/site-packages/pip/_internal/cli/autocompletion.py"[0m, line [35m12[0m, in [35m<module>[0m
+    from pip._internal.cli.main_parser import create_main_parser
+  File [35m"/usr/lib/python3.14/site-packages/pip/_internal/cli/main_parser.py"[0m, line [35m11[0m, in [35m<module>[0m
+    from pip._internal.build_env import get_runnable_pip
+  File [35m"/usr/lib/python3.14/site-packages/pip/_internal/build_env.py"[0m, line [35m22[0m, in [35m<module>[0m
+    from pip._internal.cli.spinners import open_rich_spinner, open_spinner
+  File [35m"/usr/lib/python3.14/site-packages/pip/_internal/cli/spinners.py"[0m, line [35m11[0m, in [35m<module>[0m
+    from pip._vendor.rich.console import (
+    ...<4 lines>...
+    )
+  File [35m"/usr/lib/python3.14/site-packages/pip/_vendor/rich/console.py"[0m, line [35m53[0m, in [35m<module>[0m
+    from .pretty import Pretty, is_expandable
+  File [35m"/usr/lib/python3.14/site-packages/pip/_vendor/rich/pretty.py"[0m, line [35m33[0m, in [35m<module>[0m
+    import attr as _attr_module
+  File [35m"/usr/lib/python3.14/site-packages/attr/__init__.py"[0m, line [35m28[0m, in [35m<module>[0m
+    from ._next_gen import define, field, frozen, mutable
+  File [35m"<frozen importlib._bootstrap>"[0m, line [35m1371[0m, in [35m_find_and_load[0m
+  File [35m"<frozen importlib._bootstrap>"[0m, line [35m1342[0m, in [35m_find_and_load_unlocked[0m
+  File [35m"<frozen importlib._bootstrap>"[0m, line [35m938[0m, in [35m_load_unlocked[0m
+  File [35m"<frozen importlib._bootstrap_external>"[0m, line [35m755[0m, in [35mexec_module[0m
+  File [35m"<frozen importlib._bootstrap_external>"[0m, line [35m869[0m, in [35mget_code[0m
+[1;35mKeyboardInterrupt[0m
 
- [48;5;235m   [0m[38;5;254;48;5;235mYes[0m[48;5;235m   [0m  [48;5;212m   [0m[38;5;230;48;5;212mNo[0m[48;5;212m   [0m                       [K
-
-[147D[4A
-
- [48;5;212m   [0m[38;5;230;48;5;212mYes[0m[48;5;212m   [0m  [48;5;235m   [0m[38;5;254;48;5;235mNo[0m[48;5;235m   [0m                       [K
-
-[147D[4A [K[J[147D[2K[?2004l[?25h[?1002l[?1003l[?1006l[?25l:: Synchronizing package databases...
- core-testing
- core
- extra-testing
- extra
- multilib-testing
-[3F extra-testing is up to date[K[1E extra is up to date[K[3F core-testing is up to date[K[1E core is up to date[K[3E multilib-testing is up to date[K[1E multilib
-[1F multilib is up to date[K[1E:: Starting full system upgrade...
- there is nothing to do
-[?25h:: Looking for PKGBUILD upgrades...
-:: Looking for AUR upgrades...
-:: Looking for devel upgrades...
- there is nothing to do
-[H[2J[3JI will ask you questions. If you don't use what I ask you about
-leave it blank. Make sure to specify FULL path (ex: /home/user/.config/dunst)
-
-Input your dunst config path: 
-Input your hyprland config path: 
-Input your rofi config path: 
-Input your waybar config path: 
-Applying config for btop
-Applying config for eza
-Applying config for kitty
-Applying config for vim
-Applying config for zsh
-cp: cannot stat 'icons/*': No such file or directory
-cp: cannot stat 'wallpapers/*': No such file or directory
-cp: cannot stat 'other/spotify-notify': No such file or directory
-cp: cannot stat 'other/spotify-notify.service': No such file or directory
-Already up to date.
-~/Hyprland ~/.dotfiles
--- Gathering git info
--- Generating shader includes
---	blur1.frag
---	blur2.frag
---	blurfinish.frag
---	blurprepare.frag
---	border.frag
---	border.glsl
---	CMblurprepare.frag
---	CMborder.frag
---	CM.glsl
---	discard.glsl
---	do_CM.glsl
---	do_discard.glsl
---	do_rounding.glsl
---	do_sdr_mod.glsl
---	do_tint.glsl
---	do_tonemap.glsl
---	ext.frag
---	gain.glsl
---	get_rgba_pixel.glsl
---	get_rgb_pixel.glsl
---	get_rgbx_pixel.glsl
---	glitch.frag
---	passthru.frag
---	primaries_xyz_const.glsl
---	primaries_xyz.glsl
---	primaries_xyz_uniform.glsl
---	quad.frag
---	rgbamatte.frag
---	rounding.glsl
---	sdr_mod.glsl
---	shadow.frag
---	surface_CM.glsl
---	surface.frag
---	tex300.vert
---	tex320.vert
---	tint.glsl
---	tonemap.glsl
--- Checking for module 'udis86>=1.7.2'
---   Package 'udis86' not found
--- udis86 dependency not found, falling back to subproject
--- Found wayland-protocols at //usr/share/wayland-protocols
--- Found wayland-scanner pkgdatadir at //usr/share/wayland
--- Configuring Hyprland in Release with CMake
--- Checking deps...
--- Detected git repository root: /home/byte/Hyprland
--- Configuration supports execinfo
--- Checking for module 'epoll-shim'
---   Package 'epoll-shim' not found
--- Checking for module 'libinotify'
---   Package 'libinotify' not found
--- XWAYLAND Enabled (NO_XWAYLAND not defined) checking deps...
--- SYSTEMD support is requested (NO_SYSTEMD not defined)...
--- UWSM support is enabled (NO_UWSM not defined)...
--- Setting precompiled headers
--- Setting link libraries
--- Checking for module 'hyprland-protocols>=0.6.4'
---   Package 'hyprland-protocols' not found
--- hyprland-protocols subproject set to subprojects/hyprland-protocols
--- hyprpm is enabled (NO_HYPRPM not defined)
--- Testing is disabled
--- Configuring done (2.1s)
--- Generating done (0.4s)
--- Build files have been written to: /home/byte/Hyprland/build
-[0/2] Re-checking globbed directories...[K
-[0/552] Scanning /home/byte/Hyprland/src/debug/crash/CrashReporter.cpp for CXX dependencies[K[0/552] Scanning /home/byte/Hyprland/src/debug/crash/SignalSafe.cpp for CXX dependencies[K[0/552] Scanning /home/byte/Hyprland/src/debug/log/Logger.cpp for CXX dependencies[K[1/552] Scanning /home/byte/Hyprland/src/debug/crash/SignalSafe.cpp for CXX dependencies[K[1/552] Scanning /home/byte/Hyprland/src/desktop/Workspace.cpp for CXX dependencies[K[2/552] Scanning /home/byte/Hyprland/src/debug/log/Logger.cpp for CXX dependencies[K[2/552] Scanning /home/byte/Hyprland/src/desktop/history/WindowHistoryTracker.cpp for CXX dependencies[K[3/552] Scanning /home/byte/Hyprland/src/debug/crash/CrashReporter.cpp for CXX dependencies[K[3/552] Scanning /home/byte/Hyprland/src/desktop/history/WorkspaceHistoryTracker.cpp for CXX dependencies[K[4/552] Scanning /home/byte/Hyprland/src/desktop/Workspace.cpp for CXX dependencies[K[4/552] Scanning /home/byte/Hyprland/src/desktop/reserved/ReservedArea.cpp for CXX dependencies[K[5/552] Scanning /home/byte/Hyprland/src/desktop/history/WindowHistoryTracker.cpp for CXX dependencies[K[5/552] Scanning /home/byte/Hyprland/src/desktop/rule/Engine.cpp for CXX dependencies[K[6/552] Scanning /home/byte/Hyprland/src/desktop/history/WorkspaceHistoryTracker.cpp for CXX dependencies[K[6/552] Scanning /home/byte/Hyprland/src/desktop/rule/Rule.cpp for CXX dependencies[K[7/552] Scanning /home/byte/Hyprland/src/desktop/reserved/ReservedArea.cpp for CXX dependencies[K[7/552] Scanning /home/byte/Hyprland/src/desktop/rule/layerRule/LayerRule.cpp for CXX dependencies[K[8/552] Scanning /home/byte/Hyprland/src/desktop/rule/Engine.cpp for CXX dependencies[K[8/552] Scanning /home/byte/Hyprland/src/desktop/rule/layerRule/LayerRuleApplicator.cpp for CXX dependencies[K^C
-ninja: build stopped: interrupted by user.
-~/.dotfiles
-lsB@    ^C
-Script done on 2026-03-03 01:01:39+00:00 [COMMAND_EXIT_CODE="130"]
+Script done on 2026-03-03 01:31:33+00:00 [COMMAND_EXIT_CODE="130"]
