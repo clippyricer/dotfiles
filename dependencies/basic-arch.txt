@@ -1,3 +1,4 @@
+libnotify
 tmux
 zip
 python3
