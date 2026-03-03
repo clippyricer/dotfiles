@@ -1,2 +1,2 @@
 all:
-	cd "scripts/" && ./gensum.sh && ./setup.sh
+	cd "scripts/" && ./gensum.sh  && ./setup.sh && ./stow.sh

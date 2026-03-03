@@ -186,7 +186,7 @@ cd $scriptdir; cd ..
 for dir in */; do
     dir=${dir%/}
     case "$dir" in
-        dependencies|hyprland|release|archive|backup|icons|other|wallpapers)
+        dependencies|hyprland|release|archive|backup|icons|other|scripts|wallpapers)
             continue
             ;;
         *)

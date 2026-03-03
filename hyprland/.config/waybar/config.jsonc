@@ -175,7 +175,7 @@
     "custom/updates": {
     "format": "{} {icon}",
     "return-type": "json",
-    "on-click": "kitty sh -c 'yay --noconfirm'",
+    "on-click": "kitty sh -c 'paru -Syu --noconfirm'",
     "format-icons": {
         "has-updates": "",
         "updated": ""

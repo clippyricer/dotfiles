@@ -6,7 +6,7 @@ PACMAN_HASH=$(md5sum ../dependencies/pacman-arch.txt | cut -d' ' -f1)
 echo "NEW HASH IS $PACMAN_HASH"
 
 if [ -f "$HOME/.cache/gensum.cache" ]; then
-    PACMAN_LOADED_HASH=$(cat "$HOME/.cache/gensum.cache")
+    PACMAN_LOADED_HASH=$(sed -n '1p' $HOME/.cache/gensum.cache)
     echo "CURRENT HASH IS $PACMAN_LOADED_HASH"
     sleep 1.5
 else
