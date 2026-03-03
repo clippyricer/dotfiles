@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# Uncomment this for output logging
 LOG_FILE="log.txt"
 
-# Comment this for ouput loggin also
-# LOGGING_ACTIVE=1
+# Comment this for ouput loggin
+LOGGING_ACTIVE=1
 
 if [ -z "$LOGGING_ACTIVE" ]; then
     # Set the flag and re-run this script using the 'script' command
@@ -15,14 +14,14 @@ if [ -z "$LOGGING_ACTIVE" ]; then
 fi
 
 #set -e
-cache="$HOME/.cache/setup.cache"
-dotdir=$(pwd)
+setupcache="$HOME/.cache/setup.cache"
+scriptdir=$(pwd)
 hyprinstall=1
 hyprconfig=1
 paruinstall="NO"
 mkdir -p "$HOME/.cache/"
 if [[ ! -f "$HOME/.cache/setup.cache" ]]; then
-    cp $dotdir/setup.cache "$HOME/.cache/setup.cache"
+    cp "../setup.cache" "$HOME/.cache/setup.cache"
 fi
 
 # Spinner function
@@ -66,18 +65,19 @@ spinner() {
 
 # Update pkgs and install script deps
 sudo pacman -Syu --noconfirm
-scriptdepsst=$(sed -n '1p' $cache)
+scriptdepsst=$(sed -n '1p' $setupcache)
 if [[ $scriptdepsst -eq 0 ]]; then
     sudo pacman -S gum base-devel python3 python-pip --noconfirm
     pip install chardet lib3 datetime requests statistics urllib3 dulwich --break-system-packages
-    sed -i '1c\1' $cache
+    sed -i '1c\1' $setupcache
 fi
 # Install paru
-parustatus=$(sed -n '2p' $cache)
+parustatus=$(sed -n '2p' $setupcache)
 if [[ ! -x /usr/bin/paru || $parustatus -eq 0 ]]; then
     pushd $HOME; git clone https://aur.archlinux.org/paru.git
     cd paru/ && makepkg -si --noconfirm; popd
-    sed -i '2c\1' $cache
+    sed -i '2c\1' $setupcache
+    paruinstall="YES"
 fi
 
 # Install hyprland deps
@@ -85,11 +85,11 @@ clear
 if gum confirm "Would you like to install hyprland/update?"; then
     hyprinstall=1
     aurdeps=$(cat dependencies/aur-arch.txt)
-    hyprdepsst=$(sed -n '3p' $cache)
+    hyprdepsst=$(sed -n '3p' $setupcache)
     if [[ $hyprdepsst -eq 0 ]]; then
         paru -S $aurdeps --noconfirm
         paruinstall="YES"
-        sed -i '3c\0' $cache
+        sed -i '3c\0' $setupcache
     else
         paru -Syu --noconfirm
     fi
@@ -106,19 +106,20 @@ fi
 
 # Install basic deps
 archdeps=$(cat dependencies/basic-arch.txt)
-archdepsst=$(sed -n '4p' $cache)
+archdepsst=$(sed -n '4p' $setupcache)
 if [[ $archdepsst -eq 0 ]]; then
     sudo pacman -S $archdeps --noconfirm --needed
-    sed -i '4c\0' $cache
+    sed -i '4c\0' $setupcache
 fi
 
 # Install non pkg dependencies
 nonpkgdeps() {
     # Rust & Other & Fonts
-    nonpkgdepsst=$(sed -n '5p' $cache)
+    nonpkgdepsst=$(sed -n '5p' $setupcache)
     if [[ $nonpkgdepsst -eq 0 ]]; then
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-        curl -LO https://github.com/clippyricer/dotfiles/releases/download/v0.1.0/assets.tar; tar -xvf assets.tar
+        curl -LO --output-dir ../ https://github.com/clippyricer/dotfiles/releases/download/v0.1.0/assets.tar; cd ..
+        tar -xvf assets.tar; rm -rf assets.tar
     
         fontdir="/usr/share/fonts/JetBrainsMono/"
         if [[ ! -d "/usr/share/fonts/JetBrainsMono" ]]; then
@@ -126,24 +127,23 @@ nonpkgdeps() {
         fi
 
         curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-        sudo tar -xvf JetBrainsMono.tar.xz -C $fontdir; rm -rf JetBrainsMono.tar.xz && rm -rf assets.tar
+        sudo tar -xvf JetBrainsMono.tar.xz -C $fontdir; rm -rf JetBrainsMono.tar.xz
         cd $fontdir; sudo rm -rf *.md *.txt
-        cd $dotdir
+        cd $scriptdir
         fc-cache -frv
 
 
         # Oh-My-Posh
-        #curl -s https://ohmyposh.dev/install.sh | bash -s
-        #mkdir -p "$HOME/.local/bin"; cd ~/.local/bin
-        #sudo mv oh-my-posh /usr/local/bin
-        cd $dotdir
+        curl -s https://ohmyposh.dev/install.sh | bash -s
+        cd $scriptdir
     fi
 }
 
 nonpkgdeps
 
 # Backup current config
-mkdir -p "$dotdir/backup/config/"
+mkdir -p "../backup/config/"
+cd ..
 
 for backupdir in */; do
     backupdir=${backupdir%/}
@@ -153,7 +153,7 @@ for backupdir in */; do
             ;;
         *)
             if [[ -d "$HOME/.config/$backupdir" ]]; then
-                cp -r "$HOME/.config/$backupdir" "$dotdir/backup/config/"
+                cp -r "$HOME/.config/$backupdir" "./backup/config/"
             fi
             ;;
     esac
@@ -161,7 +161,7 @@ done
 
 for backupfile in .vimrc .p10k.zsh .zshrc; do
     if [[ -f "$HOME/$backupfile" ]]; then
-        cp "$HOME/$backupfile" "$dotdir/backup/${file#.}"
+        cp "$HOME/$backupfile" "./backup/${file#.}"
     fi
 done
 
@@ -176,13 +176,13 @@ if [[ $hyprconfig -eq 1 ]]; then
     for program in dunst hyprland rofi waybar; do
         read -p "Input your $program config path: " program_path
         if [[ -n "$program_path" && -e "$program_path" ]]; then
-            cp -r "$program_path" "$dotdir/backup/config/"
+            cp -r "$program_path" ".//backup/config/"
         fi
     done
 fi
 
 # Initlize config
-cd $dotdir
+cd $scriptdir; cd ..
 for dir in */; do
     dir=${dir%/}
     case "$dir" in
@@ -197,7 +197,7 @@ for dir in */; do
     esac
 done
 
-cd $dotdir
+cd $scriptdir; cd ..
 
 # Install icons for hyprland & wallpapers
 if [[ $hyprconfig -eq 1 ]]; then
@@ -216,7 +216,7 @@ if [[ ! -d "$HOME/.config/systemd/user" ]]; then
     mkdir -p $HOME/.config/systemd/user/
 fi
 
-cd $dotdir
+cd $scriptdir; cd ..
 cp other/spotify-notify.service "$HOME/.config/systemd/user/"
 
 systemctl --user daemon-reload; systemctl --user enable --now spotify-notify.service
@@ -227,15 +227,15 @@ systemctl --user enable spotify-notify.service; systemctl --user start spotify-n
 if [[ $hyprinstall -eq 1 ]]; then
     if [[ ! -d "$HOME/Hyprland" ]]; then
         git clone --recursive https://github.com/hyprwm/Hyprland "$HOME/Hyprland"
+
+        pushd "$HOME/Hyprland"
+        mkdir -p build && cd build
+        cmake -G Ninja ..
+        sudo ninja install
+        popd
     else
         git -C "$HOME/Hyprland" pull --force
-    fi
-    
-    pushd "$HOME/Hyprland"
-    mkdir -p build && cd build
-    cmake -G Ninja ..
-    sudo ninja install
-    popd
+    fi    
 fi
 
 # Ly start
