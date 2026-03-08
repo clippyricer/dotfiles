@@ -1,5 +1,5 @@
 {
-  description = "A Flake to download dependencies";
+  description = "A Flake to strictly download dependencies";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -10,12 +10,13 @@
         f (import nixpkgs { inherit system; })
       );
     in {
+      # 1. This defines the bundle of packages
       packages = forAllSystems (pkgs: {
         default = pkgs.symlinkJoin {
-          name = "deps";
+          name = "my-deps";
           paths = [
             pkgs.jq
-            pkgs.python315
+            pkgs.python3 # Use python3 to grab the latest stable Python
             pkgs.zip
             pkgs.unzip
             pkgs.tmux
@@ -24,12 +25,17 @@
         };
       });
 
+      # 2. This runs when you type 'nix run .'
       apps = forAllSystems (pkgs: {
         default = {
           type = "app";
-          # This points to 'true', which does nothing. 
-          # But to get here, Nix MUST download everything in 'packages.default' first.
-          program = "${pkgs.coreutils}/bin/true";
+          # We create a tiny script that references the package bundle.
+          # Because the bundle is referenced here, Nix MUST download it all.
+          program = "${pkgs.writeShellScriptBin "trigger-download" ''
+            # Force Nix to realize (download/build) the dependencies:
+            # ${self.packages.${pkgs.system}.default}
+            echo "Dependencies successfully downloaded to the Nix store!"
+          ''}/bin/trigger-download";
         };
       });
     };
