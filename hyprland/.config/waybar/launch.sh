@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 killall -q waybar
 killall -q dunst

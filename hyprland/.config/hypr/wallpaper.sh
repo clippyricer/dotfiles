@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 killall -q awww-daemon; rm -rf ~/.cache/awww/
 

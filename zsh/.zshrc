@@ -40,6 +40,7 @@ alias omp='oh-my-posh'
 alias ompexj='oh-my-posh config export -f json -o ~/.dotfiles/zsh/.config/ohmyposh/omp.json'
 alias ompext='oh-my-posh config export -f toml -o ~/.dotfiles/zsh/.config/ohmyposh/omp.toml'
 alias reload='source ~/.zshrc'
+alias tree='eza -T --icons'
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
