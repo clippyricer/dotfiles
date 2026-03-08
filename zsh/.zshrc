@@ -78,4 +78,5 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 compinit
 eval "$(zoxide init zsh --cmd cd)"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+# Uncomment this if using homeberw
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
