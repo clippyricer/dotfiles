@@ -14,6 +14,7 @@
         zip
         python3
         python3Packages.pip
+        python3Packages.requests
         nerd-fonts.jetbrains-mono
         font-awesome
         scdoc
