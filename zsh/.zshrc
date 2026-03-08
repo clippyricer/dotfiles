@@ -21,7 +21,7 @@ compinit
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/omp.toml)"
 
 # Alias
-alias ff="fastfetch"
+alias ff="clear; fastfetch"
 alias ls="eza --icons"
 alias yazi="sudo yazi"
 alias ga="git add ."
