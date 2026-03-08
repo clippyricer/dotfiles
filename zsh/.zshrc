@@ -41,7 +41,7 @@ alias ompexj='oh-my-posh config export -f json -o ~/.dotfiles/zsh/.config/ohmypo
 alias ompext='oh-my-posh config export -f toml -o ~/.dotfiles/zsh/.config/ohmyposh/omp.toml'
 alias reload='clear; source ~/.zshrc'
 alias tree='eza -T --icons'
-alias swww='awww'
+alias awww='swww'
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
