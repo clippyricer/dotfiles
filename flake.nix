@@ -55,6 +55,7 @@
         meson
         jetbrains-mono
         tree
+        killall
       ];
     };
   };
