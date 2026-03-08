@@ -47,6 +47,7 @@
         brightnessctl
         ly
         oh-my-posh
+        stow
       ];
     };
   };
