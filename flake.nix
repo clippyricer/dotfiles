@@ -14,6 +14,7 @@
         zip
         python3
         python3Packages.pip
+        nerd-fonts.jetbrains-mono
         font-awesome
         scdoc
         unzip
