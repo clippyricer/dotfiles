@@ -48,6 +48,11 @@
         ly
         oh-my-posh
         stow
+        gum
+        ninja
+        cmake
+        meson
+        jetbrains-mono
       ];
     };
   };
