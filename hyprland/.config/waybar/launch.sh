@@ -2,6 +2,8 @@
 
 killall -q waybar
 killall -q dunst
+pkill waybar
+pkill dunst
 
 while pgrep -u $UID -x waybar >/dev/null; do sleep 1; done
 
